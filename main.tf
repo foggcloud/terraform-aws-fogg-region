@@ -5,10 +5,16 @@ resource "aws_key_pair" "this" {
 
 resource "aws_default_vpc" "default" {
   tags = {
-    Name = "default"
+    Name      = "default"
+    ManagedBy = "Terraform"
   }
 }
 
 resource "aws_default_security_group" "default" {
   vpc_id = aws_default.vpc.default.id
+
+  tags = {
+    Name      = "default"
+    ManagedBy = "Terraform"
+  }
 }
